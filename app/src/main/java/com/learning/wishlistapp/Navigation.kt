@@ -18,8 +18,17 @@ fun Navigation(viewModel: WishViewModel = viewModel(),
             HomeView(navController, viewModel)
         }
 
-        composable(Screen.AddScreen.route){
-            AddEditDetailView(id = 0L, viewModel = viewModel , navController = navController)
+        composable(Screen.AddScreen.route + "/{id}",
+            arguments = listOf(
+                navArgument("id"){
+                    type = NavType.LongType
+                    defaultValue = 0L
+                    nullable = false
+                }
+            )
+        ){entry ->
+            val id = if(entry.arguments != null) entry.arguments!!.getLong("id")  else 0L
+            AddEditDetailView(id = id, viewModel = viewModel , navController = navController)
         }
     }
 }
