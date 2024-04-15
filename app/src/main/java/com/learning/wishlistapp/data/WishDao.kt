@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 abstract class WishDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    abstract suspend fun addWish(wishEntity: Wish)
+    abstract suspend fun addAWish(wishEntity: Wish)
 
     //Loads all wishes from the wish table
     @Query("Select * from `wish-table`")
